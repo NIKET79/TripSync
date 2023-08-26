@@ -1,0 +1,13 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import 'ngx-toastr/toastr';
+
+.set-lang-flag {
+  * {
+    height: 28px;
+    width: 28px;
+    margin-right: 3px;
+    cursor: pointer;
+  }
+}

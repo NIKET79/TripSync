@@ -1,0 +1,61 @@
+{
+  "AUTH": {
+    "REGISTER": {
+      "REQUIREMENTS": "Anforderungen",
+      "ERRORS": "Fehler",
+      "REQUIRED": "Das Feld {{REGISTER_FIELD_NAME_REQUIRED}} muss ausgefüllt sein",
+      "EMAIL": {
+        "TITLE": "Post",
+        "EMAIL": "Die E-Mail muss im richtigen Format vorliegen"
+      },
+      "USERNAME": {
+        "TITLE": "Nutzername",
+        "MINLENGTH": "Mindestlänge von Benutzernamen: {{REGISTER_USERNAME_MINLENGTH}}"
+      },
+      "PASSWORD": {
+        "TITLE": "Passwort",
+        "RULES": {
+          "MINLENGTH": "Mindestlänge des Passworts von {{REGISTER_PASSWORD_MINLENGTH}} Zeichen",
+          "UPPERCASE": "Das Passwort muss einen Großbuchstaben enthalten",
+          "LOWERCASE": "Das Passwort muss einen Kleinbuchstaben enthalten",
+          "DIGIT": "Das Passwort muss eine Zahl enthalten"
+        }
+      },
+      "CONFIRM_PASSWORD": {
+        "TITLE": "Passwort Bestätigung",
+        "COMPARE": "Die Felder Passwort und Passwort bestätigen müssen übereinstimmen"
+      },
+      "SUBMIT": "Ein Konto erstellen",
+      "ALREADY_HAVE_ACC": "Sie haben bereits ein Konto?",
+      "LOG_IN": "Anmelden"
+    },
+    "LOGIN": {
+      "TITLE": "Ausfahrt",
+      "EMAIL": "Post",
+      "PASSWORD": "Passwort",
+      "FORGOT": "Haben Sie Ihr Passwort vergessen?",
+      "NOT_A_MEMBER": "Sie haben noch kein Konto?",
+      "SIGN_UP": "Registrieren"
+    }
+  },
+  "LANGUAGES": {
+    "UK": "ukrainisch",
+    "EN": "Englisch",
+    "DE": "Deutsch"
+  },
+  "NAVBAR": {
+    "LOGIN": "Anmelden",
+    "CHANGE_THEME": "Das Thema wechseln",
+    "USER": {
+      "DASHBOARD": "Analytik",
+      "SETTINGS": "Einstellungen",
+      "SIGN_OUT": "Hinausgehen"
+    }
+  },
+  "MAIN_PAGE": {
+    "TITLE": "Reisen Sie frei",
+    "TOP_HEADER": "Lasst uns den Moment teilen und gemeinsam reisen",
+    "TOP_DESCRIPTION": "Vernetzen Sie sich mit reisebegeisterten Freunden und unternehmen Sie gemeinsam unvergessliche Reisen. Entdecken Sie neue Wege, teilen Sie Erfahrungen und schaffen Sie unvergessliche Erinnerungen. Willkommen in der Community, die Reisen zum Abenteuer macht",
+    "GET_STARTED": "Beginnen"
+  }
+}

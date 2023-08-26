@@ -1,0 +1,167 @@
+<div class="flex min-h-screen flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <div (click)="CommonService.ToPreviousPage()" class="cursor-pointer">
+      <i class="fa-solid fa-arrow-left"></i>
+    </div>
+    <img class="mx-auto h-10 w-auto" src="./assets/logo.png" alt="TripSync">
+    <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">{{ "AUTH.REGISTER.SUBMIT" | translate }}</h2>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form class="space-y-6" [formGroup]="registerGroup" (ngSubmit)="submit()">
+      <div *ngIf="submitErrors" class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 mr-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Danger</span>
+        <div>
+          <span class="font-medium">{{"AUTH.REGISTER.ERRORS" | translate }}</span>
+          <ul class="mt-1.5 ml-4 list-disc list-inside">
+            <li *ngFor="let error of submitErrors">{{error}}</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div *ngIf="triedToSubmit && !registerGroup.valid" class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <svg class="flex-shrink-0 inline w-4 h-4 mr-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+            <span class="font-medium">{{"AUTH.REGISTER.REQUIREMENTS" | translate }}</span>
+            <ul class="mt-1.5 ml-4 list-disc list-inside">
+              <!-- Email -->
+              <li *ngIf="triedToSubmit && email?.errors?.['required']">
+                {{ "AUTH.REGISTER.REQUIRED" | translate:
+                {REGISTER_FIELD_NAME_REQUIRED: translatePipeArgument('AUTH.REGISTER.EMAIL.TITLE')}
+                }}
+              </li>
+              <li *ngIf="triedToSubmit && email?.errors?.['email']">
+                {{ "AUTH.REGISTER.EMAIL.EMAIL" | translate}}
+              </li>
+
+              <!-- Username -->
+              <li *ngIf="triedToSubmit && username?.errors?.['required']">
+                {{ "AUTH.REGISTER.REQUIRED" | translate: {
+                  REGISTER_FIELD_NAME_REQUIRED: translatePipeArgument('AUTH.REGISTER.USERNAME.TITLE')
+                } }}
+              </li>
+              <li *ngIf="triedToSubmit && username?.errors?.['minLength']">
+                {{ "AUTH.REGISTER.USERNAME.MINLENGTH" | translate:{REGISTER_USERNAME_MINLENGTH: passwordRules.minLength} }}
+              </li>
+
+              <!-- Password -->
+              <li *ngIf="triedToSubmit && password?.errors?.['required']">
+                {{ "AUTH.REGISTER.REQUIRED" | translate: {
+                REGISTER_FIELD_NAME_REQUIRED: translatePipeArgument('AUTH.REGISTER.PASSWORD.TITLE')
+              } }}
+              </li>
+              <li *ngIf="triedToSubmit && password?.errors?.['minLength']">
+                {{ "AUTH.REGISTER.PASSWORD.RULES.MINLENGTH" | translate: {REGISTER_PASSWORD_MINLENGTH: passwordRules.minLength} }}<br>
+              </li>
+              <li *ngIf="triedToSubmit && password?.errors?.['uppercaseRequired']">
+                {{ "AUTH.REGISTER.PASSWORD.RULES.UPPERCASE" | translate}}<br>
+              </li>
+              <li *ngIf="triedToSubmit && password?.errors?.['lowercaseRequired']">
+                {{ "AUTH.REGISTER.PASSWORD.RULES.LOWERCASE" | translate}}<br>
+              </li>
+              <li *ngIf="triedToSubmit && password?.errors?.['digitRequired']">
+                {{ "AUTH.REGISTER.PASSWORD.RULES.DIGIT" | translate}}<br>
+              </li>
+
+              <!-- Confirm password -->
+              <li *ngIf="triedToSubmit && confirmPassword?.errors?.['required']">
+                {{ "AUTH.REGISTER.REQUIRED" | translate: {
+                REGISTER_FIELD_NAME_REQUIRED: translatePipeArgument('AUTH.REGISTER.CONFIRM_PASSWORD.TITLE')
+              } }}
+              </li>
+              <li *ngIf="triedToSubmit && confirmPassword?.errors?.['compare']">
+                {{ "AUTH.REGISTER.CONFIRM_PASSWORD.COMPARE" | translate }}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Fields -->
+        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">
+          {{ "AUTH.REGISTER.EMAIL.TITLE" | translate}}
+        </label>
+        <div class="mt-2">
+          <input
+            formControlName="email"
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            class="block pl-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+        </div>
+      </div>
+
+      <div>
+        <label for="username" class="block text-sm font-medium leading-6 text-gray-900">
+          {{ "AUTH.REGISTER.USERNAME.TITLE" | translate}}
+        </label>
+        <div class="mt-2">
+          <input
+            formControlName="username"
+            id="username"
+            name="username"
+            type="email"
+            autocomplete="username"
+            required
+            class="block pl-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+        </div>
+      </div>
+
+      <div>
+        <div class="flex items-center justify-between">
+          <label for="password" class="block text-sm font-medium leading-6 text-gray-900">
+            {{ "AUTH.REGISTER.PASSWORD.TITLE" | translate}}
+          </label>
+        </div>
+        <div class="mt-2">
+          <input
+            formControlName="password"
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+            class="block pl-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+        </div>
+      </div>
+
+      <div>
+        <div class="flex items-center justify-between">
+          <label for="confirmPassword" class="block text-sm font-medium leading-6 text-gray-900">
+            {{ "AUTH.REGISTER.CONFIRM_PASSWORD.TITLE" | translate}}
+          </label>
+        </div>
+        <div class="mt-2">
+          <input
+            formControlName="confirmPassword"
+            id="confirmPassword"
+            name="password"
+            type="password"
+            autocomplete="confirm-password"
+            required
+            class="block pl-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+        </div>
+      </div>
+
+      <div>
+        <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          {{ "AUTH.REGISTER.SUBMIT" | translate }}
+        </button>
+      </div>
+    </form>
+
+    <p class="mt-10 text-center text-sm text-gray-500">
+      {{ "AUTH.REGISTER.ALREADY_HAVE_ACC" | translate }}
+      <a routerLink="/auth/login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+        {{ "AUTH.REGISTER.LOG_IN" | translate }}
+      </a>
+    </p>
+  </div>
+</div>

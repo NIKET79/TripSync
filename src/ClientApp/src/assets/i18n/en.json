@@ -1,0 +1,61 @@
+{
+  "AUTH": {
+    "REGISTER": {
+      "REQUIREMENTS": "Requirements",
+      "ERRORS": "Errors",
+      "REQUIRED": "Field {{REGISTER_FIELD_NAME_REQUIRED}} is required",
+      "EMAIL": {
+        "TITLE": "Email",
+        "EMAIL": "Email is not valid"
+      },
+      "USERNAME": {
+        "TITLE": "Username",
+        "MINLENGTH": "Username must have at least {{REGISTER_USERNAME_MINLENGTH}} characters"
+      },
+      "PASSWORD": {
+        "TITLE": "Password",
+        "RULES": {
+          "MINLENGTH": "Password must have at least {{REGISTER_PASSWORD_MINLENGTH}} characters",
+          "UPPERCASE": "Password must have at least 1 uppercase letter",
+          "LOWERCASE": "Password must have at least 1 lowercase letter",
+          "DIGIT": "Password must have at least 1 digit"
+        }
+      },
+      "CONFIRM_PASSWORD": {
+        "TITLE": "Confirm password",
+        "COMPARE": "Password and Confirm Password do not match"
+      },
+      "SUBMIT": "Create account",
+      "ALREADY_HAVE_ACC": "Already have an account?",
+      "LOG_IN": "Log in"
+    },
+    "LOGIN": {
+      "TITLE": "Log in",
+      "EMAIL": "Email",
+      "PASSWORD": "Password",
+      "FORGOT": "Forgot a password?",
+      "NOT_A_MEMBER": "Not a member?",
+      "SIGN_UP": "Sign up"
+    }
+  },
+  "LANGUAGES": {
+    "UK": "Ukrainian",
+    "EN": "English",
+    "DE": "Deutsch"
+  },
+  "NAVBAR": {
+    "LOGIN": "Log in",
+    "CHANGE_THEME": "Change theme",
+    "USER": {
+      "DASHBOARD": "Dashboard",
+      "SETTINGS": "Settings",
+      "SIGN_OUT": "Sign out"
+    }
+  },
+  "MAIN_PAGE": {
+    "TITLE": "Travel easily",
+    "TOP_HEADER": "Sharing Moments, Journeying Together",
+    "TOP_DESCRIPTION": "Connect with fellow travel enthusiasts and embark on unforgettable journeys together. Discover new destinations, share experiences, and create lasting memories. Welcome to a community that turns travels into adventures",
+    "GET_STARTED": "Get started"
+  }
+}
